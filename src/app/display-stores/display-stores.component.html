@@ -1,0 +1,45 @@
+<div class="container">
+    <div style="text-align: center;" class="mt-3">
+      <form [formGroup]="searchForm" >
+          <div class="form-group">
+            <input type="text" style="width: 500px;" formControlName="searchval"  placeholder="Enter text to search">
+          </div>
+        
+      </form>
+      
+    </div>
+    <div class="row">
+      <div class="col-3 m-0  mb-3 " *ngFor="let item of filteredData;let i=index">
+        
+        <div class="card" > 
+          <!-- {{item.image}} -->
+          <img class="card-img-top m-0" src="{{item.image.Image}}" height="200px" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title">Brand: {{item.Brand}}</h5>
+            <p class="card-text">Country: {{item.Country}}</p>
+            <p class="card-text">Style: {{item.Style}}</p>
+            <p class="card-text">Rating:{{item.Stars}}</p>
+            
+              <star-rating [value]="item.Stars" totalstars="5"
+               checkedcolor="red" uncheckedcolor="black" size="24px" readonly="true" ></star-rating>
+  
+              <!-- <ul class="list-inline rating-list"  *ngFor="let star of stars" style="display: inline-block">
+                <li  [ngClass]="{'selected': (star <= item.Stars)}">
+                ll  <i class="fa fa-star"></i>
+                </li> -->
+                
+              <!-- </ul> -->
+            
+            
+            <p class="card-text">Varierty: {{item.Variety}}</p>
+            <button (click)="setData(item,i)"> View Details </button>
+            
+          </div>
+        </div>
+    
+      </div>
+    
+    </div>
+    
+  </div>
+  
